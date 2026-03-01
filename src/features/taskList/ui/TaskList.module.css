@@ -1,0 +1,15 @@
+.tasks-main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tasks-select {
+  max-width: 200px;
+}

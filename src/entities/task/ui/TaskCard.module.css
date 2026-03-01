@@ -1,0 +1,27 @@
+.task-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  border: 1px solid black;
+  align-items: center;
+}
+
+.status-wrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.status-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.remove-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
