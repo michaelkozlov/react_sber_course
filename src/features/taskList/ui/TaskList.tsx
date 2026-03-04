@@ -4,6 +4,7 @@ import clsx from "clsx";
 import styles from "./TaskList.module.css";
 import type { ITaskListProps } from "../model/types";
 import { Select } from "shared/select/ui/Select";
+import React from "react";
 
 export const TaskList: FC<ITaskListProps> = ({
   tasks,
@@ -17,8 +18,8 @@ export const TaskList: FC<ITaskListProps> = ({
 
       <div className={clsx(styles["tasks-list"])}>
         {tasks.map((task) => (
-          <>
-            <TaskCard key={task.id} {...task} />
+          <React.Fragment key={task.id}>
+            <TaskCard {...task} />
 
             <button
               className={clsx(styles["remove-button"])}
@@ -26,7 +27,7 @@ export const TaskList: FC<ITaskListProps> = ({
             >
               Удалить задачу
             </button>
-          </>
+          </React.Fragment>
         ))}
       </div>
     </div>
