@@ -1,14 +1,9 @@
-import type { FC } from "react";
 import styles from "./TaskCard.module.css";
 import clsx from "clsx";
-import type { ITaskCardProps } from "../model/types";
+import type { ITask } from "../model/types";
+import React from "react";
 
-export const TaskCard: FC<ITaskCardProps> = ({
-  id,
-  title,
-  completed,
-  onRemove,
-}) => {
+export const TaskCard = React.memo(({ id, title, completed }: ITask) => {
   return (
     <div key={id}>
       <div className={clsx(styles["task-wrapper"])}>
@@ -18,14 +13,7 @@ export const TaskCard: FC<ITaskCardProps> = ({
           <div className={clsx(styles["status-title"])}>Статус:</div>
           <div>{completed ? "Выполнено" : "Не выполнено"}</div>
         </div>
-
-        <button
-          className={clsx(styles["remove-button"])}
-          onClick={() => onRemove(id)}
-        >
-          Удалить задачу
-        </button>
       </div>
     </div>
   );
-};
+});

@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import type { ITask } from "entities/task";
 
 const initialTasks: ITask[] = [
@@ -24,11 +24,25 @@ export const useTasks = () => {
     return tasks;
   }, [filter, tasks]);
 
-  const removeTask = (id: string): void => {
+  const removeTask = useCallback((id: string): void => {
     setTasks((prev) => {
       return prev.filter((task) => task.id !== id);
     });
-  };
+  }, []);
 
-  return { tasks: filteredTasks, filter, removeTask, setFilter };
+  const filteredOptions = useMemo(() => {
+    return [
+      { id: 1, value: "all", label: "Все задачи" },
+      { id: 2, value: "completed", label: "Завершенные" },
+      { id: 3, value: "incomplete", label: "Незавершенные" },
+    ];
+  }, []);
+
+  return {
+    tasks: filteredTasks,
+    filter,
+    removeTask,
+    setFilter,
+    filteredOptions,
+  };
 };
