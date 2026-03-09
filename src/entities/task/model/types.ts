@@ -3,7 +3,3 @@ export interface ITask {
   title: string;
   completed: boolean;
 }
-
-export interface ITaskCardProps extends ITask {
-  onRemove: (id: string) => void;
-}

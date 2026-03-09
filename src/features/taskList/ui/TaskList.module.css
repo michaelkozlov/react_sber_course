@@ -9,7 +9,3 @@
   flex-direction: column;
   gap: 20px;
 }
-
-.tasks-select {
-  max-width: 200px;
-}
