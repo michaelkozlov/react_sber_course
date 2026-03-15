@@ -1,15 +1,11 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import type { ITask } from "entities/task";
-
-const initialTasks: ITask[] = [
-  { id: "1", title: "task 1", completed: false },
-  { id: "2", title: "task 2", completed: true },
-  { id: "3", title: "task 3", completed: false },
-  { id: "4", title: "task 4", completed: true },
-];
+import { useGetTasksQuery } from "../api/tasksApi";
 
 export const useTasks = () => {
-  const [tasks, setTasks] = useState<ITask[]>(initialTasks);
+  const { data: tasksData } = useGetTasksQuery();
+
+  const [tasks, setTasks] = useState<ITask[]>([]);
   const [filter, setFilter] = useState<string>("all");
 
   const filteredTasks = useMemo(() => {
@@ -37,6 +33,12 @@ export const useTasks = () => {
       { id: 3, value: "incomplete", label: "Незавершенные" },
     ];
   }, []);
+
+  useEffect(() => {
+    if (tasksData && tasks.length === 0) {
+      setTasks(tasksData);
+    }
+  }, [tasksData]);
 
   return {
     tasks: filteredTasks,
