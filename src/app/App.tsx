@@ -1,12 +1,21 @@
-import "./App.css";
-import { TaskPage } from "pages/tasks/ui/TaskPage";
+import { Box, Container } from "@mui/material";
+import { Outlet } from "react-router";
+import { withProviders } from "./providers";
 
-function App() {
+export const App = withProviders(() => {
   return (
     <>
-      <TaskPage />
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh",
+        }}
+      >
+        <Container maxWidth="lg" sx={{ py: 8 }}>
+          <Outlet />
+        </Container>
+      </Box>
     </>
   );
-}
-
-export default App;
+});
