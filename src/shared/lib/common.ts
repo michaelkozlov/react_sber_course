@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 export function hasOwnProperty<X extends object, Y extends PropertyKey>(
   obj: X,
   prop: Y,
@@ -25,3 +27,20 @@ export const getMessageFromError = (error: unknown) => {
     error.message
   );
 };
+
+const ErrorSchema = z.looseObject({
+    message: z.string(),
+});
+
+export const parseErrorWithZod = (error: unknown, userErrorMessage?: string) => {
+    const result = ErrorSchema.safeParse(error);
+
+    if (result.success) {
+        return result.data;
+    }
+
+    return {
+        message: userErrorMessage || 'unknown error',
+    };
+};
+
