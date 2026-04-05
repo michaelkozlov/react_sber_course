@@ -1,0 +1,9 @@
+.root {
+  position: fixed;
+  top: calc(50% - 250px / 2);
+  left: calc(50% - 400px / 2);
+  width: 400px;
+  height: 250px;
+  border: 1px solid black;
+  border-radius: 20px;
+}

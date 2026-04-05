@@ -4,6 +4,7 @@ import { NotFoundPage } from "pages/not-found/ui/NotFoundPage";
 import { RegistrationPage } from "pages/registration/ui/RegistrationPage";
 import { App } from "app/App";
 import { Task5Page } from "pages/task-5/ui/Task5Page";
+import { PortalShowcasePage } from "pages/portal-show-case/PortalShowcase";
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ export const router = createBrowserRouter([
       {
         path: "task5",
         element: <Task5Page />,
+      },
+      {
+        path: "task8",
+        element: <PortalShowcasePage />,
       },
       {
         path: "*",
